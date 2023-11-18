@@ -4,22 +4,43 @@
     "slug": "movemania",
     "version": "1.0.0",
     "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "jsEngine": "hermes",
+    "platforms": ["ios", "android"],
+    "assetBundlePatterns": ["**/*"],
     "icon": "./assets/images/icon.png",
-    "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffe000"
     },
-    "assetBundlePatterns": ["**/*"],
     "android": {
+      "package": "com.movemania.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#000"
       }
     },
-    "web": {
-      "favicon": "./assets/images/favicon.png"
-    }
+    "ios": {
+      "bundleIdentifier": "com.movemania.app",
+      "bitcode": false,
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "UIBackgroundModes": ["location", "fetch"]
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ]
+    ]
   }
 }

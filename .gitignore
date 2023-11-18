@@ -8,6 +8,10 @@ node_modules/
 dist/
 web-build/
 
+# Expo managed workflow
+ios/
+android/
+
 # Native
 *.orig.*
 *.jks
@@ -33,3 +37,7 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+.vscode/
+
+

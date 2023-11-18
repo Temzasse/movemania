@@ -1,8 +1,8 @@
-import { Audio } from "expo-av";
-import { useEffect, useRef } from "react";
+import { Audio } from 'expo-av';
+import { useEffect, useRef } from 'react';
 
-import { styled } from "../../styled";
-import { Text } from "../uikit/Text";
+import { styled } from '../../styled';
+import { Text } from '../uikit/Text';
 
 type Props = {
   children: string;
@@ -20,7 +20,7 @@ export function Button({ children, ...props }: Props) {
   useEffect(() => {
     async function loadSound() {
       const result = await Audio.Sound.createAsync(
-        require("../../../assets/sounds/button.mp3")
+        require('../../../assets/sounds/button.mp3')
       );
       sound.current = result.sound;
       sound.current.setVolumeAsync(0.2);
@@ -37,16 +37,16 @@ export function Button({ children, ...props }: Props) {
   );
 }
 
-const ButtonBase = styled("TouchableOpacity", {
-  fontFamily: "$playful",
-  backgroundColor: "$primary",
+const ButtonBase = styled('TouchableOpacity', {
+  fontFamily: '$playful',
+  backgroundColor: '$primary',
   shadowOffset: { width: 0, height: 6 },
   shadowOpacity: 1,
   shadowRadius: 0,
-  shadowColor: "$primaryDark",
-  paddingHorizontal: "$medium",
-  paddingVertical: "$small",
-  borderRadius: "$medium",
-}).attrs((p) => ({
+  shadowColor: '$primaryDark',
+  paddingHorizontal: '$medium',
+  paddingVertical: '$small',
+  borderRadius: '$medium',
+}).attrs(() => ({
   activeOpacity: 0.9,
 }));

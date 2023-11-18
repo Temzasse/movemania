@@ -1,17 +1,17 @@
-import { StyleSheet } from "react-native";
-import { createStitches } from "stitches-native";
-import type * as Stitches from "stitches-native";
+import { StyleSheet } from 'react-native';
+import { createStitches } from 'stitches-native';
+import type * as Stitches from 'stitches-native';
 
 const { styled, css, createTheme, config, theme, useTheme, ThemeProvider } =
   createStitches({
     theme: {
       colors: {
-        primary: "#FFF500",
-        primaryDark: "#716D00",
-        primaryLight: "#FFF385",
-        text: "#FFFFFF",
-        textMuted: "#808080",
-        buttonText: "#000000",
+        primary: '#FFF500',
+        primaryDark: '#716D00',
+        primaryLight: '#FFF385',
+        text: '#FFFFFF',
+        textMuted: '#808080',
+        buttonText: '#000000',
       },
       radii: {
         none: 0,
@@ -37,8 +37,8 @@ const { styled, css, createTheme, config, theme, useTheme, ThemeProvider } =
         hairline: StyleSheet.hairlineWidth,
       },
       fonts: {
-        playful: "Jomhuria",
-        normal: "Offside",
+        playful: 'Jomhuria',
+        normal: 'Offside',
       },
     },
   });
@@ -46,7 +46,7 @@ const { styled, css, createTheme, config, theme, useTheme, ThemeProvider } =
 export { styled, css, createTheme, useTheme, config, theme, ThemeProvider };
 export type CSS = Stitches.CSS<typeof config>;
 export type Theme = typeof theme;
-export type Color = keyof Theme["colors"];
-export type Space = keyof Theme["space"];
-export type Radii = keyof Theme["radii"];
-export type Fonts = keyof Theme["fonts"];
+export type Color = keyof Theme['colors'];
+export type Space = keyof Theme['space'];
+export type Radii = keyof Theme['radii'];
+export type Fonts = keyof Theme['fonts'];

@@ -6,11 +6,11 @@ import {
   Children,
   Fragment,
   ReactElement,
-} from "react";
+} from 'react';
 
-import { View, ViewProps } from "react-native";
+import { View, ViewProps } from 'react-native';
 
-import { styled, Theme, useTheme } from "../../styled";
+import { styled, Theme, useTheme } from '../../styled';
 
 type ReactChildArray = ReturnType<typeof Children.toArray>;
 
@@ -28,16 +28,16 @@ export function flattenChildren(children: ReactNode): ReactChildArray {
 }
 
 type Props = ViewProps & {
-  spacing: keyof Theme["space"];
-  align?: "center" | "start" | "end" | "stretch";
-  justify?: "center" | "start" | "end" | "between" | "around";
+  spacing: keyof Theme['space'];
+  align?: 'center' | 'start' | 'end' | 'stretch';
+  justify?: 'center' | 'start' | 'end' | 'between' | 'around';
   columns?: number;
   children: ReactNode;
 };
 
 export function Grid({
   children,
-  spacing = "none",
+  spacing = 'none',
   align,
   justify,
   columns,
@@ -75,22 +75,22 @@ export function Grid({
   );
 }
 
-const Wrapper = styled("View", {
-  flexDirection: "row",
-  flexWrap: "wrap",
+const Wrapper = styled('View', {
+  flexDirection: 'row',
+  flexWrap: 'wrap',
   variants: {
     align: {
-      center: { alignItems: "center" },
-      start: { alignItems: "flex-start" },
-      end: { alignItems: "flex-end" },
-      stretch: { alignItems: "stretch" },
+      center: { alignItems: 'center' },
+      start: { alignItems: 'flex-start' },
+      end: { alignItems: 'flex-end' },
+      stretch: { alignItems: 'stretch' },
     },
     justify: {
-      center: { justifyContent: "center" },
-      start: { justifyContent: "flex-start" },
-      end: { justifyContent: "flex-end" },
-      between: { justifyContent: "space-between" },
-      around: { justifyContent: "space-around" },
+      center: { justifyContent: 'center' },
+      start: { justifyContent: 'flex-start' },
+      end: { justifyContent: 'flex-end' },
+      between: { justifyContent: 'space-between' },
+      around: { justifyContent: 'space-around' },
     },
   },
 });

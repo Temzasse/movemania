@@ -1,15 +1,15 @@
-import { memo } from "react";
-import { SvgXml } from "react-native-svg";
-import type { ViewStyle } from "react-native";
+import { memo } from 'react';
+import { SvgXml } from 'react-native-svg';
+import type { ViewStyle } from 'react-native';
 
-import * as icons from "./icons";
-import { Theme, useTheme } from "../../styled";
+import * as icons from './icons';
+import { Theme, useTheme } from '../../styled';
 
 export type IconName = keyof typeof icons;
 
 type Props = {
   name: IconName;
-  color?: keyof Theme["colors"];
+  color?: keyof Theme['colors'];
   forcedColor?: string;
   size?: number;
   style?: ViewStyle;
@@ -17,7 +17,7 @@ type Props = {
 
 export const Icon = memo(function Icon({
   name,
-  color = "text",
+  color = 'text',
   forcedColor,
   size = 24,
   style,

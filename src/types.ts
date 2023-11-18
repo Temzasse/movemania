@@ -3,7 +3,7 @@ export type Coordinate = {
   longitude: number;
 };
 
-export type Reward = "coin" | "gem" | "key" | "chest";
+export type Reward = 'coin' | 'gem' | 'key' | 'chest';
 
 export type Hexagon = {
   h3Index: string;
@@ -13,11 +13,11 @@ export type Hexagon = {
 };
 
 export type GamePhase =
-  | "start"
-  | "play"
-  | "stats"
-  | "highlights"
-  | "next-level"; // fake phase for displaying the next level
+  | 'start'
+  | 'play'
+  | 'stats'
+  | 'highlights'
+  | 'next-level'; // fake phase for displaying the next level
 
 export type GameStats = Record<Reward, { collected: number; max: number }>;
 

@@ -1,11 +1,11 @@
-import React from "react";
-import { Image } from "react-native";
+import React from 'react';
+import { Image } from 'react-native';
+import { BlurView } from 'expo-blur';
 
-import { Reward, RewardState } from "../types";
-import { styled } from "../styled";
-import { rewardAssets } from "../../assets/assets";
-import { Text } from "./uikit";
-import { BlurView } from "expo-blur";
+import { Reward, RewardState } from '../types';
+import { styled } from '../styled';
+import { rewardAssets } from '../../assets/assets';
+import { Text } from './uikit';
 
 export function StatsBar({ stats }: { stats: Record<Reward, RewardState> }) {
   return (
@@ -16,7 +16,7 @@ export function StatsBar({ stats }: { stats: Record<Reward, RewardState> }) {
             <StatIcon source={rewardAssets[key as Reward].image} />
             <StatText
               variant="button"
-              color={value.foundCount === 0 ? "textMuted" : "primary"}
+              color={value.foundCount === 0 ? 'textMuted' : 'primary'}
             >
               {value.foundCount}
             </StatText>
@@ -27,25 +27,25 @@ export function StatsBar({ stats }: { stats: Record<Reward, RewardState> }) {
   );
 }
 
-const StatsBarContainer = styled("View", {
-  display: "flex",
-  flexDirection: "row",
+const StatsBarContainer = styled('View', {
+  display: 'flex',
+  flexDirection: 'row',
   gap: 8,
   paddingVertical: 8,
   paddingHorizontal: 12,
   borderRadius: 28,
-  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
 });
 
-const Square = styled("View", {
-  backgroundColor: "rgba(255, 255, 255, 0.1)",
+const Square = styled('View', {
+  backgroundColor: 'rgba(255, 255, 255, 0.1)',
   borderRadius: 20,
   padding: 8,
   flex: 1,
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "space-around",
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-around',
 });
 
 const StatIcon = styled(Image, {

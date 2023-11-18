@@ -1,8 +1,8 @@
-import { styled } from "../styled";
-import { Reward, RewardState } from "../types";
-import { Button, Grid, Overlay, Text } from "./uikit";
-import { Stack } from "./uikit/Stack";
-import { rewardAssets } from "../../assets/assets";
+import { styled } from '../styled';
+import { Reward, RewardState } from '../types';
+import { Button, Grid, Overlay, Text } from './uikit';
+import { Stack } from './uikit/Stack';
+import { rewardAssets } from '../../assets/assets';
 
 export function LevelCompletedOverlay({
   stats,
@@ -14,7 +14,7 @@ export function LevelCompletedOverlay({
   return (
     <Overlay>
       <Stack axis="y" spacing="small">
-        <LevelImage source={require("../../assets/images/level-1.jpg")} />
+        <LevelImage source={require('../../assets/images/level-1.jpg')} />
         <Stack
           axis="y"
           spacing="medium"
@@ -36,7 +36,7 @@ export function LevelCompletedOverlay({
 
                   <StatText
                     variant="button"
-                    color={value.foundCount === 0 ? "textMuted" : "primary"}
+                    color={value.foundCount === 0 ? 'textMuted' : 'primary'}
                   >
                     {value.foundCount}/{value.maxCount} {key}s
                   </StatText>
@@ -52,7 +52,7 @@ export function LevelCompletedOverlay({
   );
 }
 
-const LevelImage = styled("ImageBackground", {
+const LevelImage = styled('ImageBackground', {
   height: 200,
 });
 
@@ -61,25 +61,25 @@ const StatText = styled(Text, {
   marginTop: 4, // stupid fix for visually centering the text...
 });
 
-const StatIcon = styled("Image", {
+const StatIcon = styled('Image', {
   width: 32,
   height: 32,
 });
 
-const LevelStatsContainer = styled("View", {
-  display: "flex",
-  flexDirection: "row",
-  flexWrap: "wrap",
+const LevelStatsContainer = styled('View', {
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
   gap: 12,
 });
 
-const LevelStats = styled("View", {
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
+const LevelStats = styled('View', {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
   gap: 10,
   paddingVertical: 8,
   paddingHorizontal: 12,
   borderRadius: 20,
-  backgroundColor: "rgba(255, 255, 255, 0.10)",
+  backgroundColor: 'rgba(255, 255, 255, 0.10)',
 });

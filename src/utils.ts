@@ -1,8 +1,8 @@
-import { MutableRefObject, useEffect, useRef, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as Location from "expo-location";
-import * as h3 from "h3-js";
-import { Coordinate } from "./types";
+import { MutableRefObject, useEffect, useRef, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Location from 'expo-location';
+import * as h3 from 'h3-js';
+import { Coordinate } from './types';
 
 export function useLocation() {
   const [location, setLocation] = useState<null | Coordinate>(null);
@@ -11,7 +11,7 @@ export function useLocation() {
     (async () => {
       const { status } = await Location.requestForegroundPermissionsAsync();
 
-      if (status === "granted") {
+      if (status === 'granted') {
         const location = await Location.getCurrentPositionAsync({
           accuracy: Location.Accuracy.Highest,
         });
@@ -125,7 +125,7 @@ export function useInterval(
   useEffect(() => {
     const tick = () => savedCallback.current();
 
-    if (typeof delay === "number") {
+    if (typeof delay === 'number') {
       intervalRef.current = window.setInterval(tick, delay);
       return () => window.clearInterval(intervalRef.current!);
     }

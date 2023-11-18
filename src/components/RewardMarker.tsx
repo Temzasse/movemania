@@ -1,7 +1,7 @@
-import { Marker } from "react-native-maps";
+import { Marker } from 'react-native-maps';
 
-import { Coordinate, Reward } from "../types";
-import { rewardAssets } from "../../assets/assets";
+import { Coordinate, Reward } from '../types';
+import { rewardAssets } from '../../assets/assets';
 
 export function RewardMarker({
   reward,

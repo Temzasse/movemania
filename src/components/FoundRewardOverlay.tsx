@@ -1,11 +1,11 @@
-import LottieView from "lottie-react-native";
-import { useEffect, useRef } from "react";
-import { Audio } from "expo-av";
+import LottieView from 'lottie-react-native';
+import { useEffect, useRef } from 'react';
+import { Audio } from 'expo-av';
 
-import { Reward } from "../types";
-import { Overlay, Text } from "./uikit";
-import { rewardAssets } from "../../assets/assets";
-import { Stack } from "./uikit/Stack";
+import { Reward } from '../types';
+import { Overlay, Text } from './uikit';
+import { rewardAssets } from '../../assets/assets';
+import { Stack } from './uikit/Stack';
 
 const animationSpeedup: Record<Reward, number> = {
   coin: 2,
@@ -42,7 +42,7 @@ export function FoundRewardOverlay({
   return (
     <Overlay>
       <Stack axis="y" spacing="none" style={{ margin: 26 }}>
-        <Text style={{ textAlign: "center" }}>You've found a {reward}!</Text>
+        <Text style={{ textAlign: 'center' }}>Found a {reward}!</Text>
         <LottieView
           ref={lottieRef}
           loop={false}

@@ -1,13 +1,13 @@
-import type { ReactNode } from "react";
-import type { ViewProps } from "react-native";
+import type { ReactNode } from 'react';
+import type { ViewProps } from 'react-native';
 
-import { Theme, styled, theme } from "../../styled";
+import { Theme, styled, theme } from '../../styled';
 
 type Props = ViewProps & {
-  spacing: keyof Theme["space"] | "none";
-  axis?: "x" | "y";
-  align?: "center" | "start" | "end" | "stretch";
-  justify?: "center" | "start" | "end" | "between" | "around";
+  spacing: keyof Theme['space'] | 'none';
+  axis?: 'x' | 'y';
+  align?: 'center' | 'start' | 'end' | 'stretch';
+  justify?: 'center' | 'start' | 'end' | 'between' | 'around';
   children: ReactNode;
 };
 
@@ -32,33 +32,36 @@ export function Stack({
   );
 }
 
-const spacingVariants: { [key in Props["spacing"]]: { gap: number } } =
-  Object.entries(theme.space).reduce((acc, [key, value]) => {
-    acc[key as Props["spacing"]] = {
-      gap: Number(value.value),
-    };
-    return acc;
-  }, {} as { [key in Props["spacing"]]: { gap: number } });
+const spacingVariants: { [key in Props['spacing']]: { gap: number } } =
+  Object.entries(theme.space).reduce(
+    (acc, [key, value]) => {
+      acc[key as Props['spacing']] = {
+        gap: Number(value.value),
+      };
+      return acc;
+    },
+    {} as { [key in Props['spacing']]: { gap: number } }
+  );
 
-const Wrapper = styled("View", {
+const Wrapper = styled('View', {
   variants: {
     axis: {
-      x: { flexDirection: "row" },
-      y: { flexDirection: "column" },
+      x: { flexDirection: 'row' },
+      y: { flexDirection: 'column' },
     },
     align: {
-      center: { alignItems: "center" },
-      start: { alignItems: "flex-start" },
-      end: { alignItems: "flex-end" },
-      stretch: { alignItems: "stretch" },
-      baseline: { alignItems: "baseline" },
+      center: { alignItems: 'center' },
+      start: { alignItems: 'flex-start' },
+      end: { alignItems: 'flex-end' },
+      stretch: { alignItems: 'stretch' },
+      baseline: { alignItems: 'baseline' },
     },
     justify: {
-      center: { justifyContent: "center" },
-      start: { justifyContent: "flex-start" },
-      end: { justifyContent: "flex-end" },
-      between: { justifyContent: "space-between" },
-      around: { justifyContent: "space-around" },
+      center: { justifyContent: 'center' },
+      start: { justifyContent: 'flex-start' },
+      end: { justifyContent: 'flex-end' },
+      between: { justifyContent: 'space-between' },
+      around: { justifyContent: 'space-around' },
     },
     spacing: spacingVariants,
   },

@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from 'react';
 
-import { type useGame } from "./game";
-import { useInterval } from "./utils";
-import { SimulatedPlayer } from "./types";
+import { type useGame } from './game';
+import { useInterval } from './utils';
+import { SimulatedPlayer } from './types';
 
 export function useSimulatePlayer({
   player,

@@ -1,4 +1,4 @@
-import { Theme, theme } from "../../styled";
+import { Theme, theme } from '../../styled';
 
 type ThemeKey = keyof Theme;
 

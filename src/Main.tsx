@@ -1,25 +1,25 @@
-import { useRef, useState } from "react";
-import { View } from "react-native";
-import RNMapView, { Region, UserLocationChangeEvent } from "react-native-maps";
+import { useRef, useState } from 'react';
+import { View } from 'react-native';
+import RNMapView, { Region, UserLocationChangeEvent } from 'react-native-maps';
 
-import { distanceBetweenCoords } from "./utils";
-import { Reward, Coordinate, Hexagon } from "./types";
-import { MapView, Icon } from "./components/uikit";
-import { Hexagons } from "./components/Hexagons";
-import { useGame } from "./game";
-import { styled } from "./styled";
-import { StatsBar } from "./components/StatsBar";
-import { RewardMarker } from "./components/RewardMarker";
-import { FoundRewardOverlay } from "./components/FoundRewardOverlay";
-import { player1 } from "./player-simulation-data";
-import { ProgressBar } from "./components/ProgressBar";
-import { SimulatedPlayer } from "./components/SimulatedPlayer";
-import { Stack } from "./components/uikit/Stack";
-import { MAIN_PLAYER } from "./constants";
-import { LevelStartOverlay } from "./components/LevelStartOverlay";
-import { LevelCompletedOverlay } from "./components/LevelCompletedOverlay";
-import { LevelHighlightsOverlay } from "./components/LevelHighlightsOverlay";
-import { LevelStartNextOverlay } from "./components/LevelStartNextOverlay";
+import { distanceBetweenCoords } from './utils';
+import { Reward, Coordinate, Hexagon } from './types';
+import { MapView, Icon } from './components/uikit';
+import { Hexagons } from './components/Hexagons';
+import { useGame } from './game';
+import { styled } from './styled';
+import { StatsBar } from './components/StatsBar';
+import { RewardMarker } from './components/RewardMarker';
+import { FoundRewardOverlay } from './components/FoundRewardOverlay';
+import { player1 } from './player-simulation-data';
+import { ProgressBar } from './components/ProgressBar';
+import { SimulatedPlayer } from './components/SimulatedPlayer';
+import { Stack } from './components/uikit/Stack';
+import { MAIN_PLAYER } from './constants';
+import { LevelStartOverlay } from './components/LevelStartOverlay';
+import { LevelCompletedOverlay } from './components/LevelCompletedOverlay';
+import { LevelHighlightsOverlay } from './components/LevelHighlightsOverlay';
+import { LevelStartNextOverlay } from './components/LevelStartNextOverlay';
 
 const debug = false;
 
@@ -92,7 +92,7 @@ export function Main({ initialLocation }: { initialLocation: Coordinate }) {
         onUserLocationChange={handleUserLocationChange}
         onRegionChange={handleRegionChange}
       >
-        {game.state.phase === "play" && (
+        {game.state.phase === 'play' && (
           <>
             <RewardMarkers hexagons={game.state.hexagons} />
             <Hexagons hexagons={game.state.hexagons} />
@@ -106,18 +106,18 @@ export function Main({ initialLocation }: { initialLocation: Coordinate }) {
           <Icon
             name="location"
             size={24}
-            color={followUserLocation ? "primary" : "primaryDark"}
+            color={followUserLocation ? 'primary' : 'primaryDark'}
           />
         </FloatingButton>
 
-        <UserAvatar source={require("../assets/images/user-avatar-1.png")} />
+        <UserAvatar source={require('../assets/images/user-avatar-1.png')} />
       </Header>
 
-      {game.state.phase === "start" && (
-        <LevelStartOverlay startGame={() => game.updatePhase("play")} />
+      {game.state.phase === 'start' && (
+        <LevelStartOverlay startGame={() => game.updatePhase('play')} />
       )}
 
-      {game.state.phase === "play" && (
+      {game.state.phase === 'play' && (
         <>
           {!!foundReward && (
             <FoundRewardOverlay
@@ -131,7 +131,7 @@ export function Main({ initialLocation }: { initialLocation: Coordinate }) {
               collectedTiles={game.state.gameState.collectedTiles}
               boost={game.state.gameState.simultaneousPlayers > 1}
               stats={game.state.rewardState}
-              onComplete={() => game.updatePhase("stats")}
+              onComplete={() => game.updatePhase('stats')}
             />
             <StatsBar stats={game.state.rewardState} />
           </Footer>
@@ -142,7 +142,7 @@ export function Main({ initialLocation }: { initialLocation: Coordinate }) {
                 <Icon name="reset" size={24} color="primary" />
               </ResetGameButton>
 
-              <FinishGameButton onPress={() => game.updatePhase("stats")}>
+              <FinishGameButton onPress={() => game.updatePhase('stats')}>
                 <Icon name="check" size={24} color="primary" />
               </FinishGameButton>
             </>
@@ -150,20 +150,20 @@ export function Main({ initialLocation }: { initialLocation: Coordinate }) {
         </>
       )}
 
-      {game.state.phase === "stats" && (
+      {game.state.phase === 'stats' && (
         <LevelCompletedOverlay
           stats={game.state.rewardState}
-          onContinue={() => game.updatePhase("highlights")}
+          onContinue={() => game.updatePhase('highlights')}
         />
       )}
 
-      {game.state.phase === "highlights" && (
+      {game.state.phase === 'highlights' && (
         <LevelHighlightsOverlay
-          onContinue={() => game.updatePhase("next-level")}
+          onContinue={() => game.updatePhase('next-level')}
         />
       )}
 
-      {game.state.phase === "next-level" && (
+      {game.state.phase === 'next-level' && (
         <LevelStartNextOverlay resetGame={game.resetGame} />
       )}
     </Container>
@@ -188,51 +188,51 @@ function RewardMarkers({ hexagons }: { hexagons: Hexagon[] }) {
 
 const Container = styled(View, {
   flex: 1,
-  backgroundColor: "#000",
+  backgroundColor: '#000',
 });
 
-const Header = styled("View", {
-  flexDirection: "row",
-  position: "absolute",
+const Header = styled('View', {
+  flexDirection: 'row',
+  position: 'absolute',
   top: 60,
   left: 16,
   right: 16,
-  alignItems: "center",
-  justifyContent: "space-between",
+  alignItems: 'center',
+  justifyContent: 'space-between',
 });
 
-const FloatingButton = styled("TouchableOpacity", {
-  backgroundColor: "#000",
+const FloatingButton = styled('TouchableOpacity', {
+  backgroundColor: '#000',
   width: 40,
   height: 40,
   borderRadius: 20,
-  alignItems: "center",
-  justifyContent: "center",
+  alignItems: 'center',
+  justifyContent: 'center',
 });
 
 const ResetGameButton = styled(FloatingButton, {
-  position: "absolute",
+  position: 'absolute',
   top: 112,
   left: 16,
 });
 
 const FinishGameButton = styled(FloatingButton, {
-  position: "absolute",
+  position: 'absolute',
   top: 162,
   left: 16,
 });
 
-const UserAvatar = styled("Image", {
+const UserAvatar = styled('Image', {
   zIndex: 100,
   width: 40,
   height: 40,
   borderRadius: 48,
   borderWidth: 2,
-  borderColor: "#FFF500",
+  borderColor: '#FFF500',
 });
 
 const Footer = styled(Stack, {
-  position: "absolute",
+  position: 'absolute',
   bottom: 24,
   left: 16,
   right: 16,

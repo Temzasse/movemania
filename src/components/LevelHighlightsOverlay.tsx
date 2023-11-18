@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Button, Overlay, Stack, Text, Image } from "./uikit";
-import { styled } from "../styled";
-import { MAIN_PLAYER } from "../constants";
+import { Button, Overlay, Stack, Text, Image } from './uikit';
+import { styled } from '../styled';
+import { MAIN_PLAYER } from '../constants';
 
 export function LevelHighlightsOverlay({
   onContinue,
@@ -14,8 +14,8 @@ export function LevelHighlightsOverlay({
       <Stack axis="y" spacing="normal" style={{ padding: 20 }}>
         <Image
           autoSize={{ width: 100 }}
-          source={require("../../assets/images/highlights.png")}
-          style={{ alignSelf: "center" }}
+          source={require('../../assets/images/highlights.png')}
+          style={{ alignSelf: 'center' }}
         />
         <Stack axis="y" spacing="medium">
           <Stack axis="y" spacing="small" align="center">
@@ -41,19 +41,19 @@ export function LevelHighlightsOverlay({
 
 const users = [
   {
-    name: "Julien",
-    description: "King of comedy",
-    avatar: require("../../assets/images/user-avatar-2.png"),
+    name: 'Julien',
+    description: 'King of comedy',
+    avatar: require('../../assets/images/user-avatar-2.png'),
   },
   {
-    name: "Andreas",
-    description: "Mastermind of creativity",
-    avatar: require("../../assets/images/user-avatar-3.png"),
+    name: 'Andreas',
+    description: 'Mastermind of creativity',
+    avatar: require('../../assets/images/user-avatar-3.png'),
   },
   {
-    name: "Ville",
-    description: "Ultimate support champion",
-    avatar: require("../../assets/images/user-avatar-4.png"),
+    name: 'Ville',
+    description: 'Ultimate support champion',
+    avatar: require('../../assets/images/user-avatar-4.png'),
   },
 ];
 
@@ -91,9 +91,9 @@ function HighlightSelector() {
   );
 }
 
-const LevelStatsContainer = styled("View", {
-  display: "flex",
-  flexDirection: "row",
+const LevelStatsContainer = styled('View', {
+  display: 'flex',
+  flexDirection: 'row',
   gap: 12,
 });
 
@@ -101,34 +101,34 @@ const RadioInput = styled(Stack, {
   paddingHorizontal: 15,
   paddingVertical: 10,
   borderRadius: 99,
-  backgroundColor: "rgba(255, 255, 255, 0.10)",
+  backgroundColor: 'rgba(255, 255, 255, 0.10)',
 });
 
-const RadioButton = styled("View", {
+const RadioButton = styled('View', {
   height: 24,
   width: 24,
   borderRadius: 12,
   borderWidth: 2,
   padding: 8,
-  alignItems: "center",
-  justifyContent: "center",
+  alignItems: 'center',
+  justifyContent: 'center',
   variants: {
     checked: {
       true: {
-        borderColor: "$primary",
+        borderColor: '$primary',
       },
       false: {
-        borderColor: "#fff",
+        borderColor: '#fff',
       },
     },
   },
 });
 
-const RadioButtonInner = styled("View", {
+const RadioButtonInner = styled('View', {
   height: 12,
   width: 12,
   borderRadius: 6,
-  backgroundColor: "$primary",
+  backgroundColor: '$primary',
 });
 
-const RadioButtonWrapper = styled("TouchableOpacity", {});
+const RadioButtonWrapper = styled('TouchableOpacity', {});

@@ -1,1 +1,1 @@
-export const MAIN_PLAYER = "Teemu";
+export const MAIN_PLAYER = 'Teemu';

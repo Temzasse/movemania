@@ -1,26 +1,26 @@
-import React, { useEffect } from "react";
-import { Image, View } from "react-native";
+import React, { useEffect } from 'react';
+import { Image, View } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
   withRepeat,
   withSequence,
-} from "react-native-reanimated";
-import { styled } from "../styled";
-import { Reward, RewardState } from "../types";
-import { Stack } from "./uikit/Stack";
-import { Text } from "./uikit";
+} from 'react-native-reanimated';
+import { styled } from '../styled';
+import { Reward, RewardState } from '../types';
+import { Stack } from './uikit/Stack';
+import { Text } from './uikit';
 
 const getExpByReward = (reward: Reward) => {
   switch (reward) {
-    case "coin":
+    case 'coin':
       return 5;
-    case "gem":
+    case 'gem':
       return 10;
-    case "key":
+    case 'key':
       return 20;
-    case "chest":
+    case 'chest':
       return 30;
     default:
       return 0;
@@ -109,10 +109,10 @@ export function ProgressBar({
         align="center"
         style={{ paddingLeft: 12, paddingRight: 16 }}
       >
-        <Image source={require("../../assets/images/boost.png")} />
+        <Image source={require('../../assets/images/boost.png')} />
         <Container>
           <Progress
-            style={[progressStyle, boost && { shadowColor: "#00FF29" }]}
+            style={[progressStyle, boost && { shadowColor: '#00FF29' }]}
           />
         </Container>
       </Stack>
@@ -124,12 +124,12 @@ const Container = styled(View, {
   flex: 1,
   height: 8,
   borderRadius: 999,
-  backgroundColor: "#00000080",
+  backgroundColor: '#00000080',
 });
 
 const Progress = styled(Animated.View, {
   borderRadius: 999,
-  backgroundColor: "#00FF29",
+  backgroundColor: '#00FF29',
   shadowOffset: { width: 0, height: 12 },
   shadowOpacity: 0.8,
   shadowRadius: 16,
@@ -137,8 +137,8 @@ const Progress = styled(Animated.View, {
 
 const Boost = styled(View, {
   borderRadius: 4,
-  position: "absolute",
-  backgroundColor: "#00FF29",
+  position: 'absolute',
+  backgroundColor: '#00FF29',
   right: 10,
   bottom: 25,
   paddingHorizontal: 3,

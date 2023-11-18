@@ -1,4 +1,4 @@
-import { GameState, Reward, RewardState } from "./types";
+import { GameState, Reward, RewardState } from './types';
 
 const DEFAULT_PROBABILITY = 0.1;
 
@@ -56,7 +56,7 @@ export const achieveReward = (
     (gameState.collectedTiles / gameState.tilesToLevelUp) *
       gameState.tilesExtensionRation;
 
-  for (let reward of Object.values(rewardStates)) {
+  for (const reward of Object.values(rewardStates)) {
     // check if reward is already fully collected in collectedRewards
     if (reward.foundCount >= reward.maxCount) {
       continue;

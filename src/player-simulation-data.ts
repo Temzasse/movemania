@@ -1,8 +1,8 @@
-import { SimulatedPlayer } from "./types";
+import { SimulatedPlayer } from './types';
 
 export const player0: SimulatedPlayer = {
-  name: "Ville",
-  color: "rgba(0, 255, 115, 0.5)",
+  name: 'Ville',
+  color: 'rgba(0, 255, 115, 0.5)',
   route: [
     { latitude: 60.160833323677906, longitude: 24.942109972353233 },
     { latitude: 60.162103818134106, longitude: 24.942732244844688 },
@@ -31,8 +31,8 @@ export const player0: SimulatedPlayer = {
 };
 
 export const player1: SimulatedPlayer = {
-  name: "Ville",
-  color: "rgba(0, 255, 115, 0.5)",
+  name: 'Ville',
+  color: 'rgba(0, 255, 115, 0.5)',
   route: [
     { latitude: 60.16355353496902, longitude: 24.93812445899913 },
     { latitude: 60.16330799187811, longitude: 24.938510697097275 },
@@ -64,8 +64,8 @@ export const player1: SimulatedPlayer = {
 };
 
 export const player2: SimulatedPlayer = {
-  name: "Julien",
-  color: "rgba(30, 0, 255, 0.5)",
+  name: 'Julien',
+  color: 'rgba(30, 0, 255, 0.5)',
   route: [
     { latitude: 60.16099886926152, longitude: 24.946476199003946 },
     { latitude: 60.16105225210113, longitude: 24.94836447415043 },
@@ -88,8 +88,8 @@ export const player2: SimulatedPlayer = {
 };
 
 export const player3: SimulatedPlayer = {
-  name: "Andreas",
-  color: "rgba(30, 0, 255, 0.5)",
+  name: 'Andreas',
+  color: 'rgba(30, 0, 255, 0.5)',
   route: [
     { latitude: 60.1613803759477, longitude: 24.94465642016217 },
     { latitude: 60.16086790222475, longitude: 24.944763708522764 },

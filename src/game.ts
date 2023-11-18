@@ -1,7 +1,7 @@
-import * as h3 from "h3-js";
+import * as h3 from 'h3-js';
 
-import { MAIN_PLAYER } from "./constants";
-import { isCoordInPolygon, moveCoordinateByKm, useStorageState } from "./utils";
+import { MAIN_PLAYER } from './constants';
+import { isCoordInPolygon, moveCoordinateByKm, useStorageState } from './utils';
 
 import {
   Coordinate,
@@ -10,8 +10,8 @@ import {
   GameStats,
   Hexagon,
   Reward,
-} from "./types";
-import { getReward } from "./game-reward";
+} from './types';
+import { getReward } from './game-reward';
 
 const MAX_COINS = 5;
 const MAX_GEMS = 2;
@@ -19,7 +19,7 @@ const MAX_KEYS = 1;
 const MAX_CHESTS = 1;
 
 export function useGame(initialLocation: Coordinate) {
-  const [_state, setState] = useStorageState<Game>("game", () =>
+  const [_state, setState] = useStorageState<Game>('game', () =>
     createGame(initialLocation)
   );
 
@@ -118,7 +118,7 @@ export function useGame(initialLocation: Coordinate) {
 function createGame(initialLocation: Coordinate): Game {
   const game: Game = {
     hexagons: [],
-    phase: "start",
+    phase: 'start',
     gameState: {
       totalTiles: 0,
       collectedTiles: 0,
@@ -134,23 +134,23 @@ function createGame(initialLocation: Coordinate): Game {
     },
     rewardState: {
       coin: {
-        name: "coin",
+        name: 'coin',
         foundCount: 0,
         maxCount: 3,
       },
       gem: {
-        name: "gem",
+        name: 'gem',
         foundCount: 0,
         maxCount: 2,
       },
       chest: {
-        name: "chest",
+        name: 'chest',
         foundCount: 0,
         maxCount: 1,
         fixedProbability: 0.02,
       },
       key: {
-        name: "key",
+        name: 'key',
         foundCount: 0,
         maxCount: 1,
         fixedProbability: 0.02,

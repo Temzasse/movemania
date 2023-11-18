@@ -1,4 +1,4 @@
-import { styled } from "../styled";
+import { styled } from "../../styled";
 import { themeProp } from "./utils";
 
 export const Text = styled("Text", {

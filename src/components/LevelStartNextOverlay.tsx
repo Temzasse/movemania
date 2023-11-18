@@ -1,5 +1,5 @@
-import { Button, Overlay, Stack, Text } from "./components";
-import { styled } from "./styled";
+import { Button, Overlay, Stack, Text } from "./uikit";
+import { styled } from "../styled";
 
 export function LevelStartNextOverlay({
   resetGame,
@@ -9,7 +9,7 @@ export function LevelStartNextOverlay({
   return (
     <Overlay>
       <Stack axis="y" spacing="normal">
-        <LevelImage source={require("../assets/images/level-2.jpg")} />
+        <LevelImage source={require("../../assets/images/level-2.jpg")} />
         <Stack
           axis="y"
           spacing="medium"

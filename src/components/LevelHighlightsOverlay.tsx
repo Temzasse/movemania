@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import { Button, Overlay, Stack, Text, Image } from "./components";
-import { styled } from "./styled";
-import { MAIN_PLAYER } from "./constants";
+import { Button, Overlay, Stack, Text, Image } from "./uikit";
+import { styled } from "../styled";
+import { MAIN_PLAYER } from "../constants";
 
 export function LevelHighlightsOverlay({
   onContinue,
@@ -14,7 +14,7 @@ export function LevelHighlightsOverlay({
       <Stack axis="y" spacing="normal" style={{ padding: 20 }}>
         <Image
           autoSize={{ width: 100 }}
-          source={require("../assets/images/highlights.png")}
+          source={require("../../assets/images/highlights.png")}
           style={{ alignSelf: "center" }}
         />
         <Stack axis="y" spacing="medium">
@@ -43,17 +43,17 @@ const users = [
   {
     name: "Julien",
     description: "King of comedy",
-    avatar: require("../assets/images/user-avatar-2.png"),
+    avatar: require("../../assets/images/user-avatar-2.png"),
   },
   {
     name: "Andreas",
     description: "Mastermind of creativity",
-    avatar: require("../assets/images/user-avatar-3.png"),
+    avatar: require("../../assets/images/user-avatar-3.png"),
   },
   {
     name: "Ville",
     description: "Ultimate support champion",
-    avatar: require("../assets/images/user-avatar-4.png"),
+    avatar: require("../../assets/images/user-avatar-4.png"),
   },
 ];
 

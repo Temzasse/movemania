@@ -3,7 +3,7 @@ import { SvgXml } from "react-native-svg";
 import type { ViewStyle } from "react-native";
 
 import * as icons from "./icons";
-import { Theme, useTheme } from "../styled";
+import { Theme, useTheme } from "../../styled";
 
 export type IconName = keyof typeof icons;
 

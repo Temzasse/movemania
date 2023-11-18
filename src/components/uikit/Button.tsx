@@ -1,8 +1,8 @@
 import { Audio } from "expo-av";
 import { useEffect, useRef } from "react";
 
-import { styled } from "../styled";
-import { Text } from "./Text";
+import { styled } from "../../styled";
+import { Text } from "../uikit/Text";
 
 type Props = {
   children: string;
@@ -20,7 +20,7 @@ export function Button({ children, ...props }: Props) {
   useEffect(() => {
     async function loadSound() {
       const result = await Audio.Sound.createAsync(
-        require("../../assets/sounds/button.mp3")
+        require("../../../assets/sounds/button.mp3")
       );
       sound.current = result.sound;
       sound.current.setVolumeAsync(0.2);

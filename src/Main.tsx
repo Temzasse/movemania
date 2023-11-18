@@ -4,22 +4,22 @@ import RNMapView, { Region, UserLocationChangeEvent } from "react-native-maps";
 
 import { distanceBetweenCoords } from "./utils";
 import { Reward, Coordinate, Hexagon } from "./types";
-import { MapView, Icon } from "./components";
-import { Hexagons } from "./Hexagons";
+import { MapView, Icon } from "./components/uikit";
+import { Hexagons } from "./components/Hexagons";
 import { useGame } from "./game";
 import { styled } from "./styled";
-import { StatsBar } from "./StatsBar";
-import { RewardMarker } from "./RewardMarker";
-import { FoundRewardOverlay } from "./FoundRewardOverlay";
+import { StatsBar } from "./components/StatsBar";
+import { RewardMarker } from "./components/RewardMarker";
+import { FoundRewardOverlay } from "./components/FoundRewardOverlay";
 import { player1 } from "./player-simulation-data";
-import { ProgressBar } from "./ProgressBar";
-import { SimulatedPlayer } from "./SimulatedPlayer";
-import { Stack } from "./components/Stack";
+import { ProgressBar } from "./components/ProgressBar";
+import { SimulatedPlayer } from "./components/SimulatedPlayer";
+import { Stack } from "./components/uikit/Stack";
 import { MAIN_PLAYER } from "./constants";
-import { LevelStartOverlay } from "./LevelStartOverlay";
-import { LevelCompletedOverlay } from "./LevelCompletedOverlay";
-import { LevelHighlightsOverlay } from "./LevelHighlightsOverlay";
-import { LevelStartNextOverlay } from "./LevelStartNextOverlay";
+import { LevelStartOverlay } from "./components/LevelStartOverlay";
+import { LevelCompletedOverlay } from "./components/LevelCompletedOverlay";
+import { LevelHighlightsOverlay } from "./components/LevelHighlightsOverlay";
+import { LevelStartNextOverlay } from "./components/LevelStartNextOverlay";
 
 const debug = false;
 

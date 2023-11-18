@@ -1,12 +1,12 @@
-import { Button, Overlay, Text } from "./components";
-import { Stack } from "./components/Stack";
-import { styled } from "./styled";
+import { Button, Overlay, Text } from "./uikit";
+import { Stack } from "./uikit/Stack";
+import { styled } from "../styled";
 
 export function LevelStartOverlay({ startGame }: { startGame: () => void }) {
   return (
     <Overlay>
       <Stack axis="y" spacing="normal">
-        <LevelImage source={require("../assets/images/level-1.jpg")} />
+        <LevelImage source={require("../../assets/images/level-1.jpg")} />
         <Stack
           axis="y"
           spacing="normal"

@@ -1,10 +1,10 @@
 import React from "react";
 import { Image } from "react-native";
 
-import { Reward, RewardState } from "./types";
-import { styled } from "./styled";
-import { rewardAssets } from "../assets/assets";
-import { Text } from "./components";
+import { Reward, RewardState } from "../types";
+import { styled } from "../styled";
+import { rewardAssets } from "../../assets/assets";
+import { Text } from "./uikit";
 import { BlurView } from "expo-blur";
 
 export function StatsBar({ stats }: { stats: Record<Reward, RewardState> }) {

@@ -10,7 +10,7 @@ import {
 
 import { View, ViewProps } from "react-native";
 
-import { styled, Theme, useTheme } from "../styled";
+import { styled, Theme, useTheme } from "../../styled";
 
 type ReactChildArray = ReturnType<typeof Children.toArray>;
 

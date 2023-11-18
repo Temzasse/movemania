@@ -1,6 +1,6 @@
 import * as h3 from "h3-js";
 import { Polygon } from "react-native-maps";
-import { Hexagon } from "./types";
+import { Hexagon } from "../types";
 
 type Props = {
   hexagons: Hexagon[];

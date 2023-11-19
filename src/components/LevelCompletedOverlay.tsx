@@ -1,8 +1,8 @@
 import { styled } from '../styled';
-import { Reward, RewardState } from '../types';
+import { Reward, RewardState } from '../game/types';
 import { Button, Grid, Overlay, Text } from './uikit';
 import { Stack } from './uikit/Stack';
-import { rewardAssets } from '../../assets/assets';
+import { rewardAssets } from '../assets/assets';
 
 export function LevelCompletedOverlay({
   stats,
@@ -14,7 +14,7 @@ export function LevelCompletedOverlay({
   return (
     <Overlay>
       <Stack axis="y" spacing="small">
-        <LevelImage source={require('../../assets/images/level-1.jpg')} />
+        <LevelImage source={require('../assets/images/level-1.jpg')} />
         <Stack
           axis="y"
           spacing="medium"

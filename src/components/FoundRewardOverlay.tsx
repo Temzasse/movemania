@@ -2,9 +2,9 @@ import LottieView from 'lottie-react-native';
 import { useEffect, useRef } from 'react';
 import { Audio } from 'expo-av';
 
-import { Reward } from '../types';
+import { Reward } from '../game/types';
 import { Overlay, Text } from './uikit';
-import { rewardAssets } from '../../assets/assets';
+import { rewardAssets } from '../assets/assets';
 import { Stack } from './uikit/Stack';
 
 const animationSpeedup: Record<Reward, number> = {

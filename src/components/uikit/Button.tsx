@@ -20,7 +20,7 @@ export function Button({ children, ...props }: Props) {
   useEffect(() => {
     async function loadSound() {
       const result = await Audio.Sound.createAsync(
-        require('../../../assets/sounds/button.mp3')
+        require('../../assets/sounds/button.mp3')
       );
       sound.current = result.sound;
       sound.current.setVolumeAsync(0.2);

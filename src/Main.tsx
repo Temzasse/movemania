@@ -1,104 +1,77 @@
-import { useRef, useState } from 'react';
-import { View } from 'react-native';
-import RNMapView, { Region, UserLocationChangeEvent } from 'react-native-maps';
+import { useState } from 'react';
 
-import { distanceBetweenCoords } from './utils';
-import { Reward, Coordinate, Hexagon } from './types';
-import { MapView, Icon } from './components/uikit';
-import { Hexagons } from './components/Hexagons';
-import { useGame } from './game';
+import { Reward, Coordinate } from './game/types';
+import { resetGame, updateGamePhase, useGame } from './game/state';
 import { styled } from './styled';
 import { StatsBar } from './components/StatsBar';
-import { RewardMarker } from './components/RewardMarker';
+import { Tiles } from '~components/map/Tiles';
+import { MapView } from '~components/map/MapView';
 import { FoundRewardOverlay } from './components/FoundRewardOverlay';
-import { player1 } from './player-simulation-data';
 import { ProgressBar } from './components/ProgressBar';
-import { SimulatedPlayer } from './components/SimulatedPlayer';
-import { Stack } from './components/uikit/Stack';
-import { MAIN_PLAYER } from './constants';
+import { Icon, Stack } from './components/uikit';
 import { LevelStartOverlay } from './components/LevelStartOverlay';
 import { LevelCompletedOverlay } from './components/LevelCompletedOverlay';
-import { LevelHighlightsOverlay } from './components/LevelHighlightsOverlay';
-import { LevelStartNextOverlay } from './components/LevelStartNextOverlay';
 
-const debug = false;
+const debug = __DEV__;
 
 export function Main({ initialLocation }: { initialLocation: Coordinate }) {
-  const game = useGame(initialLocation);
-  const [markersVisible, setMarkersVisible] = useState(true);
+  const game = useGame();
   const [foundReward, setFoundReward] = useState<Reward | null>(null);
   const [followUserLocation, setFollowUserLocation] = useState(true);
-  const lastLocation = useRef<Coordinate>(initialLocation);
-  const mapRef = useRef<RNMapView>(null);
+  // const [markersVisible, setMarkersVisible] = useState(true);
+  // const lastLocation = useRef<Coordinate>(initialLocation);
+  // const mapRef = useRef<RNMapView>(null);
 
-  const initialRegion = {
-    latitude: initialLocation.latitude,
-    longitude: initialLocation.longitude,
-    latitudeDelta: 0.01,
-    longitudeDelta: 0.01,
-  };
+  // function handleUserLocationChange({ nativeEvent }: UserLocationChangeEvent) {
+  //   const currentLocation = nativeEvent.coordinate;
+  //   if (!currentLocation) return;
 
-  function handleUserLocationChange({ nativeEvent }: UserLocationChangeEvent) {
-    const currentLocation = nativeEvent.coordinate;
-    if (!currentLocation) return;
+  //   const distance = distanceBetweenCoords(
+  //     currentLocation,
+  //     lastLocation.current
+  //   );
 
-    const distance = distanceBetweenCoords(
-      currentLocation,
-      lastLocation.current
-    );
+  //   // Process the current location if the user has moved enough
+  //   if (distance > 10) {
+  //     const rewardForTile = game.updateTiles(currentLocation);
 
-    // Process the current location if the user has moved enough
-    if (distance > 10) {
-      const rewardForHexagon = game.updateHexagons({
-        currentLocation,
-        player: MAIN_PLAYER,
-      });
+  //     if (!foundReward && rewardForTile) {
+  //       setFoundReward(rewardForTile);
+  //     }
+  //   }
 
-      if (!foundReward && rewardForHexagon) {
-        setFoundReward(rewardForHexagon);
-      }
-    }
+  //   if (followUserLocation) {
+  //     requestAnimationFrame(() => {
+  //       mapRef.current?.animateToRegion({
+  //         ...currentLocation,
+  //         latitudeDelta: 0.015,
+  //         longitudeDelta: 0.015,
+  //       });
+  //     });
+  //   }
 
-    if (followUserLocation) {
-      requestAnimationFrame(() => {
-        mapRef.current?.animateToRegion({
-          ...currentLocation,
-          latitudeDelta: 0.015,
-          longitudeDelta: 0.015,
-        });
-      });
-    }
+  //   lastLocation.current = currentLocation;
+  // }
 
-    lastLocation.current = currentLocation;
-  }
+  // function handleRegionChange(region: Region) {
+  //   const zoomLevel = Math.round(
+  //     Math.log(360 / region.longitudeDelta) / Math.LN2
+  //   );
 
-  function handleRegionChange(region: Region) {
-    const zoomLevel = Math.round(
-      Math.log(360 / region.longitudeDelta) / Math.LN2
-    );
-
-    if (zoomLevel < 14) {
-      setMarkersVisible(false);
-    } else if (!markersVisible) {
-      setMarkersVisible(true);
-    }
-  }
+  //   if (zoomLevel < 14) {
+  //     setMarkersVisible(false);
+  //   } else if (!markersVisible) {
+  //     setMarkersVisible(true);
+  //   }
+  // }
 
   return (
     <Container>
       <MapView
-        mapRef={mapRef}
-        initialRegion={initialRegion}
-        onUserLocationChange={handleUserLocationChange}
-        onRegionChange={handleRegionChange}
+        followUserLocation={followUserLocation}
+        initialLocation={[initialLocation.longitude, initialLocation.latitude]}
       >
-        {game.state.phase === 'play' && (
-          <>
-            <RewardMarkers hexagons={game.state.hexagons} />
-            <Hexagons hexagons={game.state.hexagons} />
-            <SimulatedPlayer game={game} player={player1} />
-          </>
-        )}
+        {game.phase === 'play' && <Tiles tiles={game.tiles} />}
       </MapView>
 
       <Header>
@@ -110,14 +83,14 @@ export function Main({ initialLocation }: { initialLocation: Coordinate }) {
           />
         </FloatingButton>
 
-        <UserAvatar source={require('../assets/images/user-avatar-1.png')} />
+        <UserAvatar source={require('./assets/images/user-avatar-1.png')} />
       </Header>
 
-      {game.state.phase === 'start' && (
-        <LevelStartOverlay startGame={() => game.updatePhase('play')} />
+      {game.phase === 'start' && (
+        <LevelStartOverlay startGame={() => updateGamePhase('play')} />
       )}
 
-      {game.state.phase === 'play' && (
+      {game.phase === 'play' && (
         <>
           {!!foundReward && (
             <FoundRewardOverlay
@@ -128,21 +101,21 @@ export function Main({ initialLocation }: { initialLocation: Coordinate }) {
 
           <Footer axis="y" spacing="xxsmall">
             <ProgressBar
-              collectedTiles={game.state.gameState.collectedTiles}
-              boost={game.state.gameState.simultaneousPlayers > 1}
-              stats={game.state.rewardState}
-              onComplete={() => game.updatePhase('stats')}
+              collectedTiles={game.gameState.collectedTiles}
+              boost={game.gameState.simultaneousPlayers > 1}
+              stats={game.rewardState}
+              onComplete={() => updateGamePhase('stats')}
             />
-            <StatsBar stats={game.state.rewardState} />
+            <StatsBar stats={game.rewardState} />
           </Footer>
 
           {debug && (
             <>
-              <ResetGameButton onPress={game.resetGame}>
+              <ResetGameButton onPress={resetGame}>
                 <Icon name="reset" size={24} color="primary" />
               </ResetGameButton>
 
-              <FinishGameButton onPress={() => game.updatePhase('stats')}>
+              <FinishGameButton onPress={() => updateGamePhase('stats')}>
                 <Icon name="check" size={24} color="primary" />
               </FinishGameButton>
             </>
@@ -150,43 +123,33 @@ export function Main({ initialLocation }: { initialLocation: Coordinate }) {
         </>
       )}
 
-      {game.state.phase === 'stats' && (
+      {game.phase === 'stats' && (
         <LevelCompletedOverlay
-          stats={game.state.rewardState}
-          onContinue={() => game.updatePhase('highlights')}
+          stats={game.rewardState}
+          onContinue={() => updateGamePhase('start')}
         />
-      )}
-
-      {game.state.phase === 'highlights' && (
-        <LevelHighlightsOverlay
-          onContinue={() => game.updatePhase('next-level')}
-        />
-      )}
-
-      {game.state.phase === 'next-level' && (
-        <LevelStartNextOverlay resetGame={game.resetGame} />
       )}
     </Container>
   );
 }
 
-function RewardMarkers({ hexagons }: { hexagons: Hexagon[] }) {
-  return (
-    <>
-      {hexagons
-        .filter((h) => h.reward && h.capturedBy.length)
-        .map(({ reward, coordinate }) => (
-          <RewardMarker
-            key={`${coordinate.latitude}-${coordinate.longitude}`}
-            reward={reward as Reward}
-            coordinate={coordinate}
-          />
-        ))}
-    </>
-  );
-}
+// function RewardMarkers({ tiles }: { tiles: Tile[] }) {
+//   return (
+//     <>
+//       {tiles
+//         .filter((h) => h.reward && h.isCaptured)
+//         .map(({ reward, coordinate }) => (
+//           <RewardMarker
+//             key={`${coordinate.latitude}-${coordinate.longitude}`}
+//             reward={reward as Reward}
+//             coordinate={coordinate}
+//           />
+//         ))}
+//     </>
+//   );
+// }
 
-const Container = styled(View, {
+const Container = styled('View', {
   flex: 1,
   backgroundColor: '#000',
 });

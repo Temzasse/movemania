@@ -8,7 +8,7 @@ import Animated, {
   withSequence,
 } from 'react-native-reanimated';
 import { styled } from '../styled';
-import { Reward, RewardState } from '../types';
+import { Reward, RewardState } from '../game/types';
 import { Stack } from './uikit/Stack';
 import { Text } from './uikit';
 
@@ -109,7 +109,7 @@ export function ProgressBar({
         align="center"
         style={{ paddingLeft: 12, paddingRight: 16 }}
       >
-        <Image source={require('../../assets/images/boost.png')} />
+        <Image source={require('../assets/images/boost.png')} />
         <Container>
           <Progress
             style={[progressStyle, boost && { shadowColor: '#00FF29' }]}

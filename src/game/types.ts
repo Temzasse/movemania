@@ -5,19 +5,14 @@ export type Coordinate = {
 
 export type Reward = 'coin' | 'gem' | 'key' | 'chest';
 
-export type Hexagon = {
+export type Tile = {
   h3Index: string;
-  capturedBy: string[];
+  isCaptured: boolean;
   reward: Reward | null;
   coordinate: Coordinate;
 };
 
-export type GamePhase =
-  | 'start'
-  | 'play'
-  | 'stats'
-  | 'highlights'
-  | 'next-level'; // fake phase for displaying the next level
+export type GamePhase = 'start' | 'play' | 'stats' | 'end';
 
 export type GameStats = Record<Reward, { collected: number; max: number }>;
 
@@ -43,14 +38,8 @@ export type GameState = {
 };
 
 export type Game = {
-  hexagons: Hexagon[];
+  tiles: Tile[];
   phase: GamePhase;
   gameState: GameState;
   rewardState: Record<Reward, RewardState>;
-};
-
-export type SimulatedPlayer = {
-  name: string;
-  color: string;
-  route: Coordinate[];
 };

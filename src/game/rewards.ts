@@ -1,6 +1,5 @@
+import { DEFAULT_PROBABILITY } from './constant';
 import { GameState, Reward, RewardState } from './types';
-
-const DEFAULT_PROBABILITY = 0.1;
 
 const getRewardProbability = (
   reward: RewardState,

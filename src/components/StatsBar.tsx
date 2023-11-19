@@ -2,9 +2,9 @@ import React from 'react';
 import { Image } from 'react-native';
 import { BlurView } from 'expo-blur';
 
-import { Reward, RewardState } from '../types';
+import { Reward, RewardState } from '../game/types';
 import { styled } from '../styled';
-import { rewardAssets } from '../../assets/assets';
+import { rewardAssets } from '../assets/assets';
 import { Text } from './uikit';
 
 export function StatsBar({ stats }: { stats: Record<Reward, RewardState> }) {
